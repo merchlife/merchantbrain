@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+  Merchant Brain - public product page.
+
+  This exists first and foremost so a payment processor can see what is being
+  sold, for how much, and on what terms. Stripe's review looks for six things
+  and most rejections are for missing one: what the product is, the price, a
+  refund policy, terms, contact details, and a business name matching the
+  account. All six are below.
+
+  The copy is deliberately plain. No "undetectable", no "guaranteed profit",
+  no claims about what any game operator will or will not do. Overstated copy
+  is what turns a routine review into a declined application, and it is also
+  the thing a customer quotes back at you later.
+
+  TO CHANGE: the refund window, the support email, and the prices are the
+  three things most likely to need editing. They are marked below.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merchant Brain - Free Market price tracker for MapleStory Classic</title>
+<meta name="description" content="Merchant Brain is a Windows desktop tool that reads Free Market shop prices off your own screen, learns what items really sell for, and tells you when something is underpriced.">
+<style>
+  :root{
+    --ink:#1a1d24; --muted:#5a6475; --line:#e3e7ee; --bg:#ffffff;
+    --soft:#f6f8fb; --accent:#2f6f4f; --accent-soft:#eaf4ee; --warn:#8a6d1f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  header{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  h1{font-size:40px;line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+  .tag{font-size:19px;color:var(--muted);margin:0}
+  h2{font-size:22px;margin:48px 0 14px;letter-spacing:-.01em}
+  h3{font-size:16px;margin:24px 0 6px}
+  p,li{color:#2c3340}
+  ul{padding-left:20px}
+  li{margin:6px 0}
+  .lede{font-size:17px}
+  .note{
+    background:var(--soft);border:1px solid var(--line);border-radius:10px;
+    padding:16px 18px;margin:24px 0;font-size:15px;color:var(--muted)
+  }
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 8px}
+  @media(max-width:620px){.plans{grid-template-columns:1fr}}
+  .plan{border:1px solid var(--line);border-radius:12px;padding:22px}
+  .plan.best{border-color:var(--accent);background:var(--accent-soft)}
+  .price{font-size:32px;font-weight:650;letter-spacing:-.02em;margin:2px 0 2px}
+  .per{font-size:14px;color:var(--muted);font-weight:400}
+  .plan h3{margin:0;font-size:14px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .cta{
+    display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    padding:12px 22px;border-radius:9px;font-weight:600;margin:8px 0
+  }
+  .cta:hover{background:#255c41}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+  td,th{border-bottom:1px solid var(--line);padding:9px 0;text-align:left;vertical-align:top}
+  th{color:var(--muted);font-weight:600;width:38%}
+  footer{margin:64px 0 48px;padding-top:24px;border-top:1px solid var(--line);
+         font-size:14px;color:var(--muted)}
+  a{color:var(--accent)}
+  code{background:var(--soft);padding:1px 6px;border-radius:5px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Merchant Brain</h1>
+  <p class="tag">A Free Market price tracker for MapleStory Classic.</p>
+</header>
+
+<p class="lede">
+  Merchant Brain is a Windows desktop application. While you browse Free Market
+  shops the way you normally would, it reads each shop window off your screen,
+  records what is listed and what has sold, learns what items actually trade
+  for, and tells you when something is priced well below its going rate.
+</p>
+
+<div class="note">
+  <strong>It only reads your screen.</strong> Merchant Brain does not play the
+  game for you. It does not modify game files, read game memory, intercept
+  network traffic, or send any input to the game. You open the shops, and you
+  buy and sell yourself.
+</div>
+
+<h2>What it does</h2>
+<ul>
+  <li><strong>Alerts while you browse.</strong> Every listing is checked as it
+      appears on screen. When something is well under what it has been selling
+      for, you get a sound and a notice showing the item, the price, your
+      profit after the 3% shop fee, and where the shop is.</li>
+  <li><strong>Four kinds of alert</strong> - cheap against recent sales, cheap
+      against the last week, cheap against what other sellers are asking, and
+      items selling below what an NPC pays.</li>
+  <li><strong>A watchlist</strong> for specific items you are hunting, with an
+      optional maximum price.</li>
+  <li><strong>Prices built from observed sales</strong>, weighted so recent
+      ones count for more. Obvious nonsense prices are discarded, and equipment
+      is flagged rather than priced, because individual stats vary.</li>
+  <li><strong>Price checks and listing guidance</strong> for items you want to
+      sell.</li>
+  <li><strong>A profit ledger</strong> recording what you actually made.</li>
+  <li><strong>Everything stays on your computer.</strong> Your scan history is
+      stored locally and is not uploaded.</li>
+</ul>
+
+<h2>What you need</h2>
+<table>
+  <tr><th>Operating system</th><td>Windows, able to run MapleStory Classic</td></tr>
+  <tr><th>Display</th><td>Any resolution from 1280&times;720 to 4K, windowed or full screen</td></tr>
+  <tr><th>Internet</th><td>Required. The licence is checked periodically; it keeps working for up to 3 hours offline</td></tr>
+  <tr><th>In game</th><td>The minimap needs to be open so the tool can read which room you are in</td></tr>
+</table>
+
+<h2>Pricing</h2>
+<div class="plans">
+  <div class="plan">
+    <h3>Monthly</h3>
+    <!-- PRICE: change here and in Stripe together -->
+    <div class="price">$50<span class="per"> / month</span></div>
+    <p style="margin:8px 0 0;font-size:15px;color:var(--muted)">
+      Full access. Cancel any time; it simply stops renewing.
+    </p>
+  </div>
+  <div class="plan best">
+    <h3>Lifetime</h3>
+    <div class="price">$500<span class="per"> once</span></div>
+    <p style="margin:8px 0 0;font-size:15px;color:var(--muted)">
+      One payment. Includes future updates, with no recurring charge.
+    </p>
+  </div>
+</div>
+<p style="font-size:15px;color:var(--muted)">
+  Prices are in US dollars. Both tiers include the same software and the same
+  support.
+</p>
+
+<h2>How to buy</h2>
+<p>
+  Merchant Brain is sold and supported through our Discord server. Join, open a
+  ticket, and you will be walked through it.
+</p>
+<p>
+  Each licence key is locked to one computer. After paying you will run the
+  application once, and it will show you a short code identifying your PC; send
+  that code and your key is issued against it. If you later change computers,
+  open a ticket and the key is moved across at no cost.
+</p>
+<p><a class="cta" href="https://discord.gg/m6AQC5pegy">Join the Discord</a></p>
+
+<h2>Refunds</h2>
+<!-- REFUND POLICY: edit the window or the wording here if you want it different.
+     Stripe needs *a* stated policy; this one is deliberately simple. -->
+<p>
+  If Merchant Brain does not work on your computer and we cannot get it working
+  for you, contact us within <strong>14 days</strong> of purchase and you will
+  be refunded in full.
+</p>
+<p>
+  Because each key is locked to your machine and software cannot be returned
+  once it has been issued, we do not refund change of mind after a key has been
+  activated and is working.
+</p>
+<p>
+  Monthly subscriptions can be cancelled at any time and will not renew. We do
+  not pro-rate part-used months.
+</p>
+
+<h2>Terms</h2>
+<ul>
+  <li>A licence is for one person and locked to one computer. Sharing, reselling
+      or publishing your key ends the licence without a refund.</li>
+  <li>Merchant Brain is provided as it is. We cannot guarantee any particular
+      result, profit, or that the tool will continue to read the game correctly
+      if the game changes.</li>
+  <li>We do not make representations about any game operator's rules. The
+      software reads your own screen and sends nothing to the game; what you do
+      with the information is your decision.</li>
+  <li>We may end a licence for abuse, chargeback fraud, or sharing.</li>
+  <li>Your scan data stays on your computer. We do not collect it.</li>
+</ul>
+
+<h2>Contact</h2>
+<p>
+  Support is handled in the Discord server, which is the fastest way to reach
+  us: <a href="https://discord.gg/m6AQC5pegy">discord.gg/m6AQC5pegy</a>
+  <!-- SUPPORT EMAIL: Stripe likes seeing one. Add it here when you have an
+       address you are happy to publish. -->
+</p>
+
+<footer>
+  <p><strong>Merchant Brain</strong></p>
+  <p>
+    Merchant Brain is an independent tool and is not affiliated with,
+    endorsed by, or sponsored by Nexon. MapleStory is a trademark of its
+    respective owner.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
